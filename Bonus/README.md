@@ -1,1 +1,1 @@
-> Functions to manipulate singly linked list  
+> Functions to manipulate singly linked lists
