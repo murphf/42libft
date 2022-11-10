@@ -6,16 +6,17 @@
 #    By: murphy <murphy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 20:58:29 by styes             #+#    #+#              #
-#    Updated: 2022/11/10 18:06:13 by murphy           ###   ########.fr        #
+#    Updated: 2022/11/10 20:55:35 by murphy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CC        = gcc
+RM        = rm -f
 NAME = libft.a
-
-
 OBJ_PATH=./Objects/
 SRC_PATH=./Mandatory/
-B=Bonus
+BONUS_PATH=./Bonus/
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_isdigit.c\
 ft_memset.c\
@@ -52,34 +53,35 @@ ft_strdup.c\
 ft_strrchr.c\
 ft_striteri.c\
 
-BONUS = $(B)/ft_lstadd_back.c\
-$(B)/ft_lstadd_front.c\
-$(B)/ft_lstclear.c\
-$(B)/ft_lstdelone.c\
-$(B)/ft_lstiter.c \
-$(B)/ft_lstlast.c\
-$(B)/ft_lstmap.c\
-$(B)/ft_lstnew.c\
-$(B)/ft_lstsize.c\
+BONUS_SRC = ft_lstadd_back.c\
+ft_lstadd_front.c\
+ft_lstclear.c\
+ft_lstdelone.c\
+ft_lstiter.c \
+ft_lstlast.c\
+ft_lstmap.c\
+ft_lstnew.c\
+ft_lstsize.c\
 
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ = ${SRC:.c=.o}
 OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
-OBJBONUS = ${BONUS:.c=.o}
 
-CC        = gcc
-RM        = rm -f
-
-CFLAGS = -Wall -Wextra -Werror
+BONUS_SRCS = $(addprefix $(BONUS_PATH), $(BONUS_SRC))
+OBJBONUS = ${BONUS_SRC:.c=.o}
+OBJSBONUS = $(addprefix $(OBJ_PATH), $(OBJBONUS))
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	$(CC) $(CFLAGS) -c $< -o $@ 
+
+$(OBJ_PATH)%.o: $(BONUS_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 ${NAME}: ${OBJS}
 	ar rc ${NAME} ${OBJS}
 
-bonus: ${OBJBONUS}
-	ar rc ${NAME} ${OBJBONUS}
+bonus: ${OBJSBONUS}
+	ar rc ${NAME} ${OBJSBONUS}
 
 #.c.o:
 #${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -87,9 +89,11 @@ bonus: ${OBJBONUS}
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS} ${OBJBONUS}
+	${RM} ${OBJS} ${OBJSBONUS}
 
 fclean:    clean
 	${RM} ${NAME}
 
 re:        fclean all
+
+.PHONY: all clean fclean re
