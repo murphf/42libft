@@ -6,7 +6,7 @@
 #    By: murphy <murphy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 20:58:29 by styes             #+#    #+#              #
-#    Updated: 2022/11/10 20:55:35 by murphy           ###   ########.fr        #
+#    Updated: 2022/11/10 21:42:00 by murphy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,14 +63,17 @@ ft_lstmap.c\
 ft_lstnew.c\
 ft_lstsize.c\
 
+#ADD DIRECTORY TO SOURCE FILES
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ = ${SRC:.c=.o}
+#ADD DIRECTORY TO OBJECT FILES
 OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
 
 BONUS_SRCS = $(addprefix $(BONUS_PATH), $(BONUS_SRC))
 OBJBONUS = ${BONUS_SRC:.c=.o}
 OBJSBONUS = $(addprefix $(OBJ_PATH), $(OBJBONUS))
 
+#CREATE OBJECT FILES
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
@@ -82,9 +85,6 @@ ${NAME}: ${OBJS}
 
 bonus: ${OBJSBONUS}
 	ar rc ${NAME} ${OBJSBONUS}
-
-#.c.o:
-#${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 all: ${NAME}
 
