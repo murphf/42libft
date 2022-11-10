@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: styes <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:23:58 by styes             #+#    #+#             */
-/*   Updated: 2021/11/23 00:31:04 by styes            ###   ########.fr       */
+/*   Updated: 2022/11/10 17:52:00 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../Mandatory/libft.h"
+
 // delete content of the linked list's nodes using the (del) function,
 //and free the pointers
 

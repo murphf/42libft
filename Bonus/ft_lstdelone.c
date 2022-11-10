@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: styes <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:19:03 by styes             #+#    #+#             */
-/*   Updated: 2021/11/17 19:22:46 by styes            ###   ########.fr       */
+/*   Updated: 2022/11/10 17:52:04 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../Mandatory/libft.h"
 
 // delete the content of the node and free its pointer
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
